@@ -1,0 +1,25 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Wallet data - KHÔNG PUSH LÊN GITHUB (bảo mật)
+wallets/wallet_*/
+wallets/bot_chrome_data/
+
+# Chỉ giữ lại extensions
+!wallets/extensions/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

@@ -1,0 +1,45 @@
+{
+   "action": {
+      "default_popup": "popup.html"
+   },
+   "background": {
+      "service_worker": "./sw/background.js"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "./app/inject.js" ],
+      "matches": [ "http://*/*", "https://*/*", "file://*/*" ],
+      "run_at": "document_start",
+      "world": "MAIN"
+   }, {
+      "all_frames": true,
+      "js": [ "./app/content.js" ],
+      "matches": [ "http://*/*", "https://*/*", "file://*/*" ],
+      "run_at": "document_start"
+   }, {
+      "all_frames": true,
+      "js": [ "./app/trezor-content-script.js" ],
+      "matches": [ "*://connect.trezor.io/*/popup.html*" ]
+   } ],
+   "content_security_policy": {
+      "extension_pages": "default-src 'self' ; frame-src https://connect.trezor.io/ https://www.youtube-nocookie.com; script-src 'self' 'wasm-unsafe-eval'; font-src 'self' data: https://use.typekit.net; object-src 'self'; connect-src https://mempool.lw.iog.io https://ipfs.blockfrost.dev https://cardano-mainnet.blockfrost.io https://cardano-preprod.blockfrost.io https://cardano-preview.blockfrost.io https://cardano-sanchonet.blockfrost.io https://xbt-mainnet.gomaestro-api.org https://xbt-testnet.gomaestro-api.org https://live-mainnet.lw.iog.io https://live-preprod.lw.iog.io https://live-preview.lw.iog.io https://live-sanchonet.lw.iog.io wss://live-mainnet.lw.iog.io wss://live-preprod.lw.iog.io wss://live-preview.lw.iog.io wss://live-sanchonet.lw.iog.io https://o622089.ingest.us.sentry.io https://apis.dappradar.com https://coingecko.live-mainnet.eks.lw.iog.io https://coingecko.live-mainnet.eks.lw.iog.io https://muesliswap.live-mainnet.eks.lw.iog.io http://localhost:* http://127.0.0.1:* https://e.lw.iog.io https://use.typekit.net https://api.handle.me/ https://*.api.handle.me/ data:; style-src * 'unsafe-inline'; img-src * data: blob:;"
+   },
+   "description": "One fast, accessible, and secure platform for digital assets, DApps, NFTs, and DeFi.",
+   "host_permissions": [ "\u003Call_urls>" ],
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAka60JHxHX0cwGYYMYLqLLzFOXcKyPo0JJAMqb0UE1htxfx5o3KBQGrOhlhzfUHtSNiSHBxdV+MEoICbogHPZu/vRF+4KRATzEjd+/2KCLKpjn2xvG3ay+WvFi5vhzk8h0dJelLKIX8lR0C31B+HU4oiwP+DwPTjlMELRZM68HxCXZ2UjY4VIkbNyWjKmsmuUwP2k7ul6vD/5ePEac69KRFI9Z+aI7kg0UnVbDYg+jJDupHlVGtxnbrjsBwEhUHISFZbGuSjtnFDNf2LHN1iReVlfpg1kJFvj9chaULo64iMjsp+eCoVtZHq1OTAm03jpNOp3k2sRluBQz2wk5zjnswIDAQAB",
+   "manifest_version": 3,
+   "name": "Lace",
+   "permissions": [ "webRequest", "storage", "tabs", "unlimitedStorage" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.30.0",
+   "web_accessible_resources": [ {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "*.js" ]
+   } ]
+}
